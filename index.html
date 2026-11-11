@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Locai Gateway: you decide which apps use your local AI</title>
+  <meta name="description" content="Locai Gateway is a free Windows app that sits between your apps and local AI runtimes such as Ollama and LM Studio. It shows which app is calling, asks before a new one gets in, applies per-app rules and keeps secrets out of prompts. Nothing leaves your PC.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#121433">
+  <link rel="canonical" href="https://mjtpena.github.io/locai-gateway-site/">
+  <link rel="icon" href="assets/favicon.ico" sizes="any">
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Locai Gateway">
+  <meta property="og:title" content="Locai Gateway: you decide which apps use your local AI">
+  <meta property="og:description" content="A free Windows app that puts a front door on your local AI. See which app is calling, ask before a new one gets in, set per-app rules and keep secrets out of prompts.">
+  <meta property="og:url" content="https://mjtpena.github.io/locai-gateway-site/">
+  <meta property="og:image" content="https://mjtpena.github.io/locai-gateway-site/assets/social.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Locai Gateway logo with the line: You decide which apps use your local AI">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="./" aria-current="page">
+        <img src="assets/logo.svg" width="32" height="32" alt="">
+        Locai Gateway
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <ul>
+          <li class="nav-wide"><a href="#features">Features</a></li>
+          <li class="nav-wide"><a href="#screens">Screens</a></li>
+          <li class="nav-wide"><a href="#how">How it works</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="support.html">Support</a></li>
+          <li><a class="nav-cta" href="#get">Get the app</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="band hero" aria-labelledby="hero-title">
+      <div class="wrap">
+        <div>
+          <p class="eyebrow">Free for Windows 10 and Windows 11</p>
+          <h1 id="hero-title">You decide which apps use <span class="accent">your local AI</span></h1>
+          <p class="lead">Locai Gateway sits between the apps on your PC and your local model runtimes, such as Ollama and LM Studio. It shows which app is calling, asks before a new one gets in, and keeps secrets out of prompts.</p>
+          <div class="actions">
+            <a class="button button--light" href="#get">Get Locai Gateway</a>
+            <a class="button button--ghost" href="#how">See how it works</a>
+          </div>
+          <p class="fineprint">No account. No telemetry. Nothing leaves your PC.</p>
+        </div>
+        <figure class="shot">
+          <img src="assets/screens/overview-dark.png" width="1920" height="1080" decoding="async"
+               alt="Locai Gateway dashboard in the dark theme. The Overview tab shows gateway status, today's requests and the local runtimes it found.">
+        </figure>
+      </div>
+    </section>
+
+    <section class="runtimes" aria-labelledby="runtimes-title">
+      <div class="wrap">
+        <p id="runtimes-title">Works with</p>
+        <ul class="chips">
+          <li>Ollama</li>
+          <li>LM Studio</li>
+          <li>Jan</li>
+          <li>GPT4All</li>
+          <li>llama.cpp</li>
+          <li>Foundry Local</li>
+          <li>Any OpenAI-compatible server on this PC</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="what" aria-labelledby="what-title">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="kicker">What it does</span>
+          <h2 id="what-title">Local AI has no front door. This adds one.</h2>
+          <p>A local runtime listens on a port on your PC. Programs that reach that port can list your models and send prompts, and the runtime does not tell you which program it was. Locai Gateway gives your apps one address to use and puts you in charge of who gets through.</p>
+        </div>
+
+        <ol class="flow" aria-label="How a request travels">
+          <li>
+            <h3>Your apps</h3>
+            <p class="where">Anything on this PC that talks to a local model</p>
+            <ul>
+              <li>Editors and coding tools</li>
+              <li>Chat and note apps</li>
+              <li>Scripts and websites</li>
+            </ul>
+          </li>
+          <li class="flow-main">
+            <h3>Locai Gateway</h3>
+            <p class="where">Listens on <code>127.0.0.1:11500</code></p>
+            <ol>
+              <li><span><strong>Identify</strong> the program: name, publisher, signature</span></li>
+              <li><span><strong>Ask</strong> you if the app is new</span></li>
+              <li><span><strong>Enforce</strong> the app's rule and limits</span></li>
+              <li><span><strong>Redact</strong> or block secrets in the prompt</span></li>
+              <li><span><strong>Record</strong> the request in the activity log</span></li>
+            </ol>
+          </li>
+          <li>
+            <h3>Your runtimes</h3>
+            <p class="where">Running on the same PC</p>
+            <ul>
+              <li>Ollama, LM Studio, Jan</li>
+              <li>GPT4All, llama.cpp</li>
+              <li>Foundry Local</li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section section--tint" id="features" aria-labelledby="features-title">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="kicker">Features</span>
+          <h2 id="features-title">Control over every request</h2>
+          <p>Each request is tied to a real program on your PC, checked against your rules, and written to a log you can read.</p>
+        </div>
+
+        <ul class="features">
+          <li class="feature">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><circle cx="9" cy="11" r="2"/><path d="M5.8 16c.6-1.5 1.8-2.2 3.2-2.2s2.6.7 3.2 2.2M15 10h3.5M15 13.5h3.5"/></svg></span>
+            <h3>Knows who is calling</h3>
+            <p>Every request is matched to the program that sent it: its name, publisher, code signature and package. Signed apps are told apart from unsigned ones.</p>
+          </li>
+          <li class="feature">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v7a2.5 2.5 0 0 1-2.5 2.5H11l-4 3.5V16h-.5A2.5 2.5 0 0 1 4 13.5z"/><path d="M9 10l2 2 4-4"/></svg></span>
+            <h3>Asks before first use</h3>
+            <p>When a new app tries to use local AI, you get a prompt: Allow once, Always allow or Block. The request waits for your answer.</p>
+          </li>
+          <li class="feature">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 7h9M17 7h3M4 12h3M11 12h9M4 17h11M19 17h1"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="12" r="2"/><circle cx="17" cy="17" r="2"/></svg></span>
+            <h3>Rules for each app</h3>
+            <p>Choose which models and endpoints an app may use. Set requests per minute, daily and monthly token budgets, and how many requests run at once. Require an API key if you want one.</p>
+          </li>
+          <li class="feature">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5.5c0 4.2-2.9 7.6-7 9-4.1-1.4-7-4.8-7-9V6z"/><path d="M9 12h6"/></svg></span>
+            <h3>Secrets stay out of prompts</h3>
+            <p>Credit card numbers and API keys are masked, and private keys are blocked, before a prompt reaches the model. Turn on more detectors or add your own patterns.</p>
+          </li>
+          <li class="feature">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 6h12M8 12h12M8 18h12"/><circle cx="4" cy="6" r="1"/><circle cx="4" cy="12" r="1"/><circle cx="4" cy="18" r="1"/></svg></span>
+            <h3>A record of every request</h3>
+            <p>The activity log shows which app called which model, when, whether it was allowed and how many tokens it used. Prompt text is not stored unless you turn that on.</p>
+          </li>
+          <li class="feature">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 8h13l-3-3M20 16H7l3 3"/></svg></span>
+            <h3>Covers apps that only know Ollama</h3>
+            <p>Optional port takeover moves Ollama to port 11435 and answers on 11434 itself, so apps with Ollama's address built in still go through the gateway. Off by default, and you can turn it back off.</p>
+          </li>
+          <li class="feature">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2.5"/><circle cx="5" cy="5" r="1.8"/><circle cx="19" cy="5" r="1.8"/><circle cx="5" cy="19" r="1.8"/><circle cx="19" cy="19" r="1.8"/><path d="M6.3 6.3l3.9 3.9M17.7 6.3l-3.9 3.9M6.3 17.7l3.9-3.9M17.7 17.7l-3.9-3.9"/></svg></span>
+            <h3>One address for every runtime</h3>
+            <p>Apps use the OpenAI or the Ollama API at one local address. The gateway finds your runtimes and sends each request to the one that has the model.</p>
+          </li>
+          <li class="feature">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M10 9v6M14 9v6"/></svg></span>
+            <h3>Pause from the tray</h3>
+            <p>The tray panel shows status, today's numbers and recent requests. One click pauses all local AI traffic through the gateway until you resume.</p>
+          </li>
+          <li class="feature">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4M9 10.5l2 2 4-4"/></svg></span>
+            <h3>Stays on your PC</h3>
+            <p>The gateway listens only on the loopback address and connects only to runtimes on the same machine. No account, no telemetry, no cloud service.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="screens" aria-labelledby="screens-title">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="kicker">Screens</span>
+          <h2 id="screens-title">A dashboard, a tray panel and a prompt</h2>
+          <p>The dashboard has six tabs: Overview, Apps, Activity, Models, Privacy and Settings. Light and dark themes follow Windows or your own choice.</p>
+        </div>
+
+        <ul class="gallery">
+          <li>
+            <figure>
+              <div class="shot">
+                <img src="assets/screens/overview.png" width="1920" height="1080" loading="lazy" decoding="async"
+                     alt="Overview tab in the light theme: gateway status, today's request and token counts, and the runtimes that were found.">
+              </div>
+              <figcaption><strong>Overview</strong> Status, today's numbers and your runtimes on one page.</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <div class="shot">
+                <img src="assets/screens/consent.png" width="1920" height="1080" loading="lazy" decoding="async"
+                     alt="Consent prompt naming the app that wants to use local AI, with Allow once, Always allow and Block buttons.">
+              </div>
+              <figcaption><strong>Consent prompt</strong> A new app waits until you allow it once, always, or block it.</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <div class="shot">
+                <img src="assets/screens/apps.png" width="1920" height="1080" loading="lazy" decoding="async"
+                     alt="Apps tab: a list of apps with publisher, signature status, the rule that applies and today's usage.">
+              </div>
+              <figcaption><strong>Apps</strong> Every app that has asked, with its publisher and its rule.</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <div class="shot">
+                <img src="assets/screens/activity.png" width="1920" height="1080" loading="lazy" decoding="async"
+                     alt="Activity tab: a table of recent requests with time, app, model, decision and token counts.">
+              </div>
+              <figcaption><strong>Activity</strong> Who called which model, and what happened.</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <div class="shot">
+                <img src="assets/screens/privacy.png" width="1920" height="1080" loading="lazy" decoding="async"
+                     alt="Privacy tab: redaction detectors for credit cards, API keys and private keys, and the settings for content logging and retention.">
+              </div>
+              <figcaption><strong>Privacy</strong> Redaction detectors, content logging and retention.</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <div class="shot">
+                <img src="assets/screens/models.png" width="1920" height="1080" loading="lazy" decoding="async"
+                     alt="Models tab: the local runtimes that were found, the models each one offers, and model aliases.">
+              </div>
+              <figcaption><strong>Models</strong> Runtimes, their models, and aliases with fallbacks.</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <div class="shot">
+                <img src="assets/screens/quick-panel.png" width="1920" height="1080" loading="lazy" decoding="async"
+                     alt="Tray quick panel above the taskbar: gateway status, a pause button, today's numbers and recent requests.">
+              </div>
+              <figcaption><strong>Tray quick panel</strong> Status, pause and recent requests, one click from the taskbar.</figcaption>
+            </figure>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section section--tint" id="how" aria-labelledby="how-title">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="kicker">How it works</span>
+          <h2 id="how-title">Three steps</h2>
+          <p>You keep your runtimes and your models. Only the address your apps use changes.</p>
+        </div>
+
+        <ol class="steps">
+          <li>
+            <h3>Install and run setup</h3>
+            <p>The first-run setup finds the runtimes on your PC, asks what should happen when an unknown app calls, and shows the address your apps should use.</p>
+          </li>
+          <li>
+            <h3>Point your apps at the gateway</h3>
+            <p>Change the base URL in each app. For apps that cannot change it, turn on port takeover for Ollama.</p>
+<pre><code><span class="comment"># OpenAI-compatible apps</span>
+http://127.0.0.1:11500/v1
+<span class="comment"># Ollama API apps</span>
+http://127.0.0.1:11500</code></pre>
+          </li>
+          <li>
+            <h3>Answer once, adjust any time</h3>
+            <p>The first request from each app raises a prompt. If you choose Always allow or Block, your answer becomes a rule that you can change on the Apps tab.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="privacy" aria-labelledby="privacy-title">
+      <div class="wrap split">
+        <div>
+          <div class="section-head">
+            <span class="kicker">Privacy</span>
+            <h2 id="privacy-title">Your data stays on your computer</h2>
+            <p>Locai Gateway has no servers. What it records is stored on your PC, for you.</p>
+          </div>
+          <p><a class="button button--primary" href="privacy.html">Read the privacy policy</a></p>
+        </div>
+        <ul class="checks">
+          <li><strong>No internet connections.</strong> <span>It accepts connections from this PC only and forwards only to runtimes on this PC.</span></li>
+          <li><strong>No telemetry.</strong> <span>No analytics, no usage statistics and no crash uploads.</span></li>
+          <li><strong>Prompt text is not stored by default.</strong> <span>The log keeps who, when, which model and how many tokens. Storing text is your choice, and full text is encrypted with Windows data protection.</span></li>
+          <li><strong>Records expire.</strong> <span>Activity is deleted after 30 days unless you pick a different period.</span></li>
+          <li><strong>No account.</strong> <span>Nothing to sign up for and nothing to sign in to.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section section--flush-top" id="get" aria-labelledby="get-title">
+      <div class="wrap">
+        <div class="band get">
+          <div>
+            <h2 id="get-title">Get Locai Gateway</h2>
+            <p>Free from the Microsoft Store. It installs for your Windows account and updates through the Store.</p>
+            <dl class="spec">
+              <dt>Windows</dt><dd>Windows 10 version 2004 (build 19041) or later, or Windows 11</dd>
+              <dt>Processor</dt><dd>x64 or ARM64</dd>
+              <dt>Price</dt><dd>Free</dd>
+            </dl>
+          </div>
+          <div class="store">
+            <!-- STORE LINK: when the listing is live, set href to the Microsoft Store URL, change the label to
+                 "Get it from Microsoft Store", and remove the note below. -->
+            <a class="button button--light" href="#get" id="store-link" aria-describedby="store-note">Microsoft Store listing coming soon</a>
+            <p id="store-note">The Store listing is not live yet. This button will link to it.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-top">
+        <a class="brand" href="./">
+          <img src="assets/logo.svg" width="32" height="32" alt="">
+          Locai Gateway
+        </a>
+        <nav aria-label="Footer">
+          <ul>
+            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="support.html">Support</a></li>
+            <li><a href="notices.html">Notices</a></li>
+            <li><a href="https://github.com/mjtpena/locai-gateway-site/issues" rel="noopener">Report an issue</a></li>
+          </ul>
+        </nav>
+      </div>
+      <p>&copy; 2026 mjtpena. Locai Gateway is an independent product. It is not affiliated with or endorsed by the makers of Ollama, LM Studio, Jan, GPT4All, llama.cpp or Foundry Local. Product names are trademarks of their owners.</p>
+    </div>
+  </footer>
+</body>
+</html>

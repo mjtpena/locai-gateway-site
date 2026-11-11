@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="Locai Gateway">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5b4bea"/>
+      <stop offset="1" stop-color="#14c4b2"/>
+    </linearGradient>
+  </defs>
+  <rect width="256" height="256" rx="57.6" fill="url(#g)"/>
+  <path d="M80.6 188.2V120.3A47.4 47.4 0 0 1 175.4 120.3V188.2" fill="none" stroke="#fff" stroke-width="23.0" stroke-linecap="round"/>
+  <circle cx="128.0" cy="160.0" r="17.9" fill="#fff"/>
+</svg>

@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page not found | Locai Gateway</title>
+  <meta name="robots" content="noindex">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#121433">
+  <!--
+    GitHub Pages serves this file for a missing page at any depth, where relative addresses would point to
+    the wrong place. So this one page is self-contained: its styles and logo are inline and its links use the
+    site's full address.
+  -->
+  <link rel="icon" href="https://mjtpena.github.io/locai-gateway-site/assets/favicon.ico" sizes="any">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      min-height: 100svh;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      color: #ffffff;
+      font-family: "Segoe UI Variable Text", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+      font-size: 1.0625rem;
+      line-height: 1.6;
+      background:
+        radial-gradient(60rem 34rem at 88% 108%, rgb(20 196 178 / 0.36), transparent 62%),
+        radial-gradient(52rem 30rem at -4% -12%, rgb(91 75 234 / 0.62), transparent 62%),
+        #121433;
+    }
+    a { color: #ffffff; }
+    :focus-visible { outline: 3px solid #5eead4; outline-offset: 3px; border-radius: 4px; }
+    .skip-link { position: absolute; left: 0.75rem; top: -4rem; background: #ffffff; color: #101228; font-weight: 600; padding: 0.6rem 1rem; border-radius: 8px; }
+    .skip-link:focus { top: 0.75rem; }
+    header { padding: 1.25rem clamp(1rem, 4vw, 2rem); }
+    .brand { display: inline-flex; align-items: center; gap: 0.65rem; font-weight: 650; font-size: 1.1rem; text-decoration: none; }
+    .brand svg { width: 2rem; height: 2rem; display: block; }
+    main { display: grid; place-items: center; padding: 2rem clamp(1rem, 4vw, 2rem) 5rem; text-align: center; }
+    .code {
+      margin: 0 0 0.5rem;
+      font-size: clamp(4rem, 14vw, 8rem);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      background: linear-gradient(100deg, #b9b0ff 10%, #5eead4 90%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    @media (forced-colors: active) { .code { background: none; color: inherit; } }
+    h1 { margin: 0 0 0.5em; font-size: clamp(1.8rem, 1.3rem + 2.4vw, 2.75rem); line-height: 1.15; letter-spacing: -0.02em; }
+    p { margin: 0 auto 1em; max-width: 34rem; color: #cdd0ea; font-size: 1.15rem; }
+    .actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; margin-top: 1.75rem; }
+    .button { display: inline-flex; align-items: center; min-height: 2.9rem; padding: 0.6rem 1.25rem; border: 1px solid transparent; border-radius: 999px; font-weight: 600; text-decoration: none; }
+    .button--light { background: #ffffff; color: #101228; }
+    .button--light:hover { background: #ececfa; }
+    .button--ghost { border-color: rgb(255 255 255 / 0.4); }
+    .button--ghost:hover { border-color: #ffffff; background: rgb(255 255 255 / 0.08); }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header>
+    <a class="brand" href="https://mjtpena.github.io/locai-gateway-site/">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" aria-hidden="true" focusable="false">
+        <defs>
+          <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#5b4bea"/>
+            <stop offset="1" stop-color="#14c4b2"/>
+          </linearGradient>
+        </defs>
+        <rect width="256" height="256" rx="57.6" fill="url(#g)"/>
+        <path d="M80.6 188.2V120.3A47.4 47.4 0 0 1 175.4 120.3V188.2" fill="none" stroke="#fff" stroke-width="23" stroke-linecap="round"/>
+        <circle cx="128" cy="160" r="17.9" fill="#fff"/>
+      </svg>
+      Locai Gateway
+    </a>
+  </header>
+
+  <main id="main">
+    <div>
+      <div class="code" aria-hidden="true">404</div>
+      <h1>This page is not here</h1>
+      <p>The address may be mistyped, or the page may have moved.</p>
+      <div class="actions">
+        <a class="button button--light" href="https://mjtpena.github.io/locai-gateway-site/">Go to the home page</a>
+        <a class="button button--ghost" href="https://mjtpena.github.io/locai-gateway-site/support.html">Get support</a>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

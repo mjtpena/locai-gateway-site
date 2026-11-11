@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy policy | Locai Gateway</title>
+  <meta name="description" content="What Locai Gateway stores on your PC, what it never collects, how long records are kept and how to delete them. The app has no servers, no telemetry and makes no internet connections.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#121433">
+  <link rel="canonical" href="https://mjtpena.github.io/locai-gateway-site/privacy.html">
+  <link rel="icon" href="assets/favicon.ico" sizes="any">
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Locai Gateway">
+  <meta property="og:title" content="Privacy policy | Locai Gateway">
+  <meta property="og:description" content="Locai Gateway runs on your PC, has no servers and no telemetry, and makes no internet connections.">
+  <meta property="og:url" content="https://mjtpena.github.io/locai-gateway-site/privacy.html">
+  <meta property="og:image" content="https://mjtpena.github.io/locai-gateway-site/assets/social.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="./">
+        <img src="assets/logo.svg" width="32" height="32" alt="">
+        Locai Gateway
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <ul>
+          <li class="nav-wide"><a href="./#features">Features</a></li>
+          <li class="nav-wide"><a href="./#how">How it works</a></li>
+          <li><a href="privacy.html" aria-current="page">Privacy</a></li>
+          <li><a href="support.html">Support</a></li>
+          <li><a class="nav-cta" href="./#get">Get the app</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="band page-hero">
+      <div class="wrap">
+        <h1>Privacy policy</h1>
+        <p>Locai Gateway runs on your PC and keeps what it records there. This page says exactly what that is.</p>
+        <p class="updated">Last updated: <time datetime="2026-11-11">11 November 2026</time></p>
+      </div>
+    </div>
+
+    <div class="page">
+      <div class="wrap with-toc">
+        <nav class="toc" aria-labelledby="toc-title">
+          <h2 id="toc-title">On this page</h2>
+          <ol>
+            <li><a href="#summary">The short version</a></li>
+            <li><a href="#scope">Who and what this covers</a></li>
+            <li><a href="#stored">What is stored on your PC</a></li>
+            <li><a href="#content">Prompt and response text</a></li>
+            <li><a href="#logs">Diagnostic logs and bundles</a></li>
+            <li><a href="#reads">What the app looks at</a></li>
+            <li><a href="#changes-pc">Changes it makes to your PC</a></li>
+            <li><a href="#never">What is never collected</a></li>
+            <li><a href="#network">Network connections</a></li>
+            <li><a href="#retention">Retention and deletion</a></li>
+            <li><a href="#secrets">How secrets are protected</a></li>
+            <li><a href="#third">Microsoft, your runtimes and this site</a></li>
+            <li><a href="#children">Children</a></li>
+            <li><a href="#updates">Changes to this policy</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ol>
+        </nav>
+
+        <article class="prose">
+          <section class="callout" id="summary" aria-labelledby="summary-title">
+            <h2 id="summary-title">The short version</h2>
+            <ul>
+              <li>Locai Gateway has no servers. Nothing it records is sent to us or to anyone else.</li>
+              <li>It makes no internet connections. It accepts connections from your own PC and forwards requests only to AI runtimes on the same PC.</li>
+              <li>It has no telemetry, no analytics, no advertising and no crash uploads. There is no account.</li>
+              <li>It keeps an activity log on your PC so that you can see which apps used your local AI. Prompt and response text is not stored unless you turn that on.</li>
+              <li>Activity records are deleted after 30 days unless you choose another period. Uninstalling the app removes its data.</li>
+            </ul>
+          </section>
+
+          <section id="scope" aria-labelledby="scope-title">
+            <h2 id="scope-title">Who and what this covers</h2>
+            <p>Locai Gateway is published by mjtpena ("we"). This policy covers the Personal edition of Locai Gateway, distributed through the Microsoft Store, and this website.</p>
+            <p>The app is a gateway that runs on your Windows PC between your apps and your local AI runtimes (for example Ollama, LM Studio, Jan, GPT4All, llama.cpp and Foundry Local). Everything described below happens on your PC, under your Windows account.</p>
+          </section>
+
+          <section id="stored" aria-labelledby="stored-title">
+            <h2 id="stored-title">What is stored on your PC</h2>
+            <p>The app keeps its data in one folder, <code>%LOCALAPPDATA%\Locai\Gateway</code>. When the app is installed from the Microsoft Store, Windows keeps that folder inside the app's own package storage. The folder holds a database (<code>gateway.db</code>), your settings and rules (<code>policy.json</code>), diagnostic logs, and a few small state files such as a marker that first-run setup is finished.</p>
+
+            <h3>A record of each request</h3>
+            <p>For every request an app sends through the gateway, the activity log stores:</p>
+            <div class="table-scroll" role="region" aria-label="Fields stored for each request" tabindex="0">
+              <table class="data-table stack">
+                <thead>
+                  <tr><th scope="col">Kind</th><th scope="col">What is stored</th></tr>
+                </thead>
+                <tbody>
+                  <tr><th scope="row">When and who</th><td>The time, a request ID, the app that sent it, its process ID, and the Windows user identifier (SID) and session number of the account it ran under.</td></tr>
+                  <tr><th scope="row">What was asked for</th><td>The HTTP method and path (for example <code>POST /v1/chat/completions</code>), the type of endpoint, the model name that was requested, the runtime and model that served it, and whether the reply was streamed.</td></tr>
+                  <tr><th scope="row">What happened</th><td>Whether the request was allowed, denied or failed, the error code and HTTP status, the rule that applied, and the first 8 characters of the per-app API key if one was used.</td></tr>
+                  <tr><th scope="row">Size and timing</th><td>Prompt and completion token counts (and whether they were estimated), how long the request took, the time to the first byte of the reply, the time spent inside the gateway, and how many fallbacks were tried.</td></tr>
+                  <tr><th scope="row">Redaction</th><td>How many matches each detector found. Counts only: the matched text is not stored.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>The text of prompts and responses is not part of this record. See <a href="#content">Prompt and response text</a>.</p>
+
+            <h3>A list of apps</h3>
+            <p>For each app that has sent a request, the app list stores: its display name; whether it is an app, a browser, a script interpreter or a relay; the path and file name of its executable; its package family name; the publisher named in its code signature; its signature status; a SHA-256 hash of the executable; the Windows user identifier it ran under; when it was first and last seen; and a small icon when one is saved. For a request from a web page, the website's origin (for example <code>https://example.com</code>) is stored. For a script interpreter such as <code>python.exe</code> or <code>node.exe</code>, the path of the script is stored.</p>
+
+            <h3>Events</h3>
+            <p>The app records events such as: a consent prompt was shown and how you answered; settings or rules changed; a runtime was found or its health changed; the gateway was paused or resumed; an API key was created or revoked; port takeover was turned on or off. An event holds a few details, such as the app, the model name, a local address or a port number.</p>
+
+            <h3>Usage totals</h3>
+            <p>For each app, the number of requests and tokens per day and per month, used to enforce the limits you set.</p>
+
+            <h3>Your settings and rules</h3>
+            <p>Your rules for each app (which can name a package, a publisher, an executable name, path or hash, a website origin, and for a script the script path or command line), limits, redaction settings including your own patterns, the list of runtimes, and preferences such as theme and notifications.</p>
+
+            <h3>Keys</h3>
+            <p>If you create a per-app API key, the app shows it to you once. It stores only a SHA-256 hash of the key, its first 8 characters and your label. If you give the gateway an API key for one of your runtimes, it is stored encrypted (see <a href="#secrets">How secrets are protected</a>).</p>
+          </section>
+
+          <section id="content" aria-labelledby="content-title">
+            <h2 id="content-title">Prompt and response text</h2>
+            <p>To do its job the gateway reads each request in memory as it passes through: it looks for the model name, applies redaction and forwards the request. What it keeps afterwards depends on the <strong>What gets recorded</strong> setting on the Privacy tab:</p>
+            <ul>
+              <li><strong>Details only (the default).</strong> No prompt or response text is stored.</li>
+              <li><strong>Details and a fingerprint.</strong> Only a SHA-256 hash of the prompt text, taken after redaction, is stored. The response is not stored. The hash has no salt, so the same prompt always gives the same hash: someone who has your database and can guess a prompt could confirm the guess.</li>
+              <li><strong>Everything.</strong> The prompt text, after redaction, and the response are stored, each cut off at 256 KB. Both are encrypted with Windows data protection (DPAPI) for your Windows account before they are written.</li>
+            </ul>
+            <p>Text is stored only for requests that were allowed. If a request is blocked, its text is not stored in any mode.</p>
+          </section>
+
+          <section id="logs" aria-labelledby="logs-title">
+            <h2 id="logs-title">Diagnostic logs and bundles</h2>
+            <p>The background host and the tray app each write a small diagnostic log in the <code>logs</code> folder, one file per day, keeping the newest seven. The logs record start-up, the ports in use, the local addresses requests were forwarded to, and what failed and where (the error type and message, and for the tray app a stack trace). The app does not write prompt or response text, API keys or secrets to these logs.</p>
+            <p>If you create a <strong>diagnostics bundle</strong> in Settings, the app writes a zip file to your temporary folder and shows you where it is. The bundle contains the gateway's current status (ports, runtimes and their local addresses, model names, today's totals), your effective settings and rules, the app version and Windows version, and up to seven recent log files. It does not contain prompt or response text, API keys or stored secrets. The bundle is not sent anywhere. Your rules can include file paths, which may contain your Windows user name, so read the bundle before you share it.</p>
+            <p>If you export the activity log to a file, the file is saved where you choose and is yours to manage.</p>
+          </section>
+
+          <section id="reads" aria-labelledby="reads-title">
+            <h2 id="reads-title">What the app looks at</h2>
+            <p>To tell apps apart, the gateway asks Windows which process opened each connection and reads that program's executable path, version information, package identity, code signature, user identifier and parent process. For script interpreters and relays (for example <code>python.exe</code>, <code>node.exe</code>, PowerShell, <code>curl.exe</code> or the WSL relay) it also reads the command line, to find the script being run.</p>
+            <p>To find your runtimes, it sends small requests to the usual runtime ports on <code>127.0.0.1</code>, checks which process is listening, and, if the Foundry Local command-line tool is installed, asks it for its address. It also checks the list of connections between programs on your PC so that it can tell you when an app talks to a runtime directly instead of through the gateway.</p>
+            <p>If your PC is managed by an organisation, the app reads that organisation's policy settings for Locai Gateway from the Windows registry.</p>
+          </section>
+
+          <section id="changes-pc" aria-labelledby="changes-pc-title">
+            <h2 id="changes-pc-title">Changes it makes to your PC</h2>
+            <ul>
+              <li><strong>Start at sign-in.</strong> Locai Gateway is registered to start when you sign in: its tray icon appears, with no window, and starts the background host. You can turn this off in the app's Settings, or in Windows Settings under Apps, then Startup.</li>
+              <li><strong>Notifications.</strong> Consent prompts are shown as Windows notifications. A prompt shows the app's name, its publisher or file path, and the model it asked for.</li>
+              <li><strong>Port takeover (off by default).</strong> If you turn it on, the app sets the <code>OLLAMA_HOST</code> environment variable for your Windows account to <code>127.0.0.1:11435</code>, restarts Ollama and listens on port 11434 itself. It saves the previous value and puts it back when you turn port takeover off or quit Locai Gateway. It also puts it back when the gateway shuts down normally, for example at sign-out, unless you chose in Settings to keep runtimes blocked while the gateway is stopped. If the app is removed or stops unexpectedly while port takeover is on, the variable can be left behind. The <a href="support.html#undo-port-takeover">support page</a> explains how to reset it by hand.</li>
+            </ul>
+          </section>
+
+          <section id="never" aria-labelledby="never-title">
+            <h2 id="never-title">What is never collected</h2>
+            <ul>
+              <li>We receive no data from the app: no usage statistics, no analytics, no crash reports, no prompts, no model names, no list of your apps.</li>
+              <li>There is no account, so there is no name, email address or password to give.</li>
+              <li>There is no advertising and no tracking.</li>
+              <li>The app does not check for updates itself. Updates come through the Microsoft Store.</li>
+              <li>We do not sell or share your data. We do not have it.</li>
+            </ul>
+          </section>
+
+          <section id="network" aria-labelledby="network-title">
+            <h2 id="network-title">Network connections</h2>
+            <p>The gateway listens only on the loopback addresses <code>127.0.0.1</code> and <code>[::1]</code>, which other computers cannot reach. It refuses to start a listener on any other address.</p>
+            <p>The only connections it opens are to your runtimes, and it checks each one: a runtime address must be an <code>http://</code> address on <code>127.0.0.1</code>, <code>[::1]</code> or <code>localhost</code>, and at connection time every address the name resolves to must be a loopback address or the connection is refused. System proxy settings are not used.</p>
+            <p>The tray app and the background host talk to each other over a named pipe on your PC.</p>
+          </section>
+
+          <section id="retention" aria-labelledby="retention-title">
+            <h2 id="retention-title">Retention and deletion</h2>
+            <ul>
+              <li><strong>Requests and events</strong> are deleted when they are older than the retention period. The default is 30 days. You can set it from 1 to 3,650 days on the Privacy tab. Clean-up runs when the gateway starts and once a day.</li>
+              <li><strong>Stored prompt and response text</strong> is deleted together with its request.</li>
+              <li><strong>Apps</strong> that have not been seen within the retention period are removed from the app list.</li>
+              <li><strong>Usage totals</strong> are kept for up to about three months, then deleted.</li>
+              <li><strong>Diagnostic logs</strong> are kept for seven daily files each.</li>
+              <li><strong>Rules, settings, API key records and runtime keys</strong> stay until you delete them in the app or uninstall it.</li>
+            </ul>
+            <p>To remove old activity sooner, lower the retention period; records older than the new period are deleted at the next clean-up. To remove everything, uninstall Locai Gateway: Windows deletes the app's data folder with it.</p>
+            <p>Two things are outside that folder and are not removed by uninstalling: a diagnostics bundle or an exported file that you created, and the <code>OLLAMA_HOST</code> variable if port takeover was still on (see <a href="support.html#undo-port-takeover">how to reset it</a>).</p>
+            <p>If the database file is ever found to be damaged at start-up, the app renames it and starts a new one. The renamed file stays in the data folder until you delete it or uninstall the app.</p>
+          </section>
+
+          <section id="secrets" aria-labelledby="secrets-title">
+            <h2 id="secrets-title">How secrets are protected</h2>
+            <ul>
+              <li>API keys that you store for your runtimes, and prompt and response text when you have chosen to record everything, are encrypted with Windows data protection (DPAPI), using a key that Windows ties to your Windows account.</li>
+              <li>Per-app API keys are stored only as SHA-256 hashes.</li>
+              <li>The rest of the database (the activity log, the app list and usage totals) is not encrypted. It sits in your user profile and is protected by the file permissions of your Windows account.</li>
+            </ul>
+          </section>
+
+          <section id="third" aria-labelledby="third-title">
+            <h2 id="third-title">Microsoft, your runtimes and this site</h2>
+            <ul>
+              <li><strong>Microsoft Store and Windows.</strong> Microsoft delivers the app and its updates, and Windows may send its own diagnostic data, including crash data, to Microsoft according to your Windows settings. Microsoft may show publishers summary statistics from that data. This is governed by Microsoft's privacy statement, not by this policy, and the app itself sends nothing.</li>
+              <li><strong>Your runtimes and apps.</strong> Ollama, LM Studio and the other runtimes, and the apps that use them, are separate products with their own privacy practices. If a runtime sends data elsewhere, for example to download a model or to use a model hosted by its maker, that is between you and that runtime.</li>
+              <li><strong>This website.</strong> The site is a set of static pages hosted on GitHub Pages. It sets no cookies and runs no analytics or scripts. GitHub, as the host, may log technical details of visits such as IP addresses, as described in GitHub's privacy statement.</li>
+              <li><strong>Support.</strong> Support is handled in a public issue tracker on GitHub. Anything you post there is public and is handled by GitHub under its privacy statement. Please do not post prompts, keys or other private data.</li>
+            </ul>
+          </section>
+
+          <section id="children" aria-labelledby="children-title">
+            <h2 id="children-title">Children</h2>
+            <p>Locai Gateway is a utility for people who run AI models on their own PC. It is not directed at children. It does not collect personal information from anyone, including children, because nothing it records leaves the PC.</p>
+          </section>
+
+          <section id="updates" aria-labelledby="updates-title">
+            <h2 id="updates-title">Changes to this policy</h2>
+            <p>If the app changes in a way that affects this policy, we will update this page and the date at the top, and describe the change in the release notes of the version that introduces it.</p>
+          </section>
+
+          <section id="contact" aria-labelledby="contact-title">
+            <h2 id="contact-title">Contact</h2>
+            <p>Questions about this policy can be raised in the issue tracker: <a href="https://github.com/mjtpena/locai-gateway-site/issues" rel="noopener">github.com/mjtpena/locai-gateway-site/issues</a>. Issues are public, so leave out anything private.</p>
+          </section>
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-top">
+        <a class="brand" href="./">
+          <img src="assets/logo.svg" width="32" height="32" alt="">
+          Locai Gateway
+        </a>
+        <nav aria-label="Footer">
+          <ul>
+            <li><a href="privacy.html" aria-current="page">Privacy</a></li>
+            <li><a href="support.html">Support</a></li>
+            <li><a href="notices.html">Notices</a></li>
+            <li><a href="https://github.com/mjtpena/locai-gateway-site/issues" rel="noopener">Report an issue</a></li>
+          </ul>
+        </nav>
+      </div>
+      <p>&copy; 2026 mjtpena. Locai Gateway is an independent product. It is not affiliated with or endorsed by the makers of Ollama, LM Studio, Jan, GPT4All, llama.cpp or Foundry Local. Product names are trademarks of their owners.</p>
+    </div>
+  </footer>
+</body>
+</html>

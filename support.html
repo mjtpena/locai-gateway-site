@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Support | Locai Gateway</title>
+  <meta name="description" content="Help for Locai Gateway: common questions, what each error code means, how to connect apps, how to undo port takeover by hand, and where to report a problem.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#121433">
+  <link rel="canonical" href="https://mjtpena.github.io/locai-gateway-site/support.html">
+  <link rel="icon" href="assets/favicon.ico" sizes="any">
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Locai Gateway">
+  <meta property="og:title" content="Support | Locai Gateway">
+  <meta property="og:description" content="Common questions, error codes, troubleshooting and where to report a problem.">
+  <meta property="og:url" content="https://mjtpena.github.io/locai-gateway-site/support.html">
+  <meta property="og:image" content="https://mjtpena.github.io/locai-gateway-site/assets/social.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="./">
+        <img src="assets/logo.svg" width="32" height="32" alt="">
+        Locai Gateway
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <ul>
+          <li class="nav-wide"><a href="./#features">Features</a></li>
+          <li class="nav-wide"><a href="./#how">How it works</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="support.html" aria-current="page">Support</a></li>
+          <li><a class="nav-cta" href="./#get">Get the app</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="band page-hero">
+      <div class="wrap">
+        <h1>Support</h1>
+        <p>Answers to common questions, what each error means, and where to report a problem.</p>
+      </div>
+    </div>
+
+    <div class="page">
+      <div class="wrap with-toc">
+        <nav class="toc" aria-labelledby="toc-title">
+          <h2 id="toc-title">On this page</h2>
+          <ol>
+            <li><a href="#help">Get help</a></li>
+            <li><a href="#connect">Connect an app</a></li>
+            <li><a href="#faq">Common questions</a></li>
+            <li><a href="#troubleshooting">Troubleshooting</a></li>
+            <li><a href="#errors">Error codes</a></li>
+            <li><a href="#undo-port-takeover">Undo port takeover by hand</a></li>
+            <li><a href="#uninstall">Uninstall</a></li>
+          </ol>
+        </nav>
+
+        <article class="prose">
+          <section id="help" aria-labelledby="help-title">
+            <h2 id="help-title">Get help</h2>
+            <p>Support is handled in a public issue tracker:</p>
+            <p><a class="button button--primary" href="https://github.com/mjtpena/locai-gateway-site/issues" rel="noopener">Open the issue tracker</a></p>
+            <p>Search first, since someone may have asked already. For a new issue, these details save a round trip:</p>
+            <ul>
+              <li>What you did, what you expected and what happened instead.</li>
+              <li>The Locai Gateway version (Settings, under About) and your Windows version.</li>
+              <li>The runtime you use, such as Ollama or LM Studio, and its version.</li>
+              <li>The error code the app received, if there was one. See <a href="#errors">Error codes</a>.</li>
+            </ul>
+            <p>The tracker is public. Do not post prompts, API keys or other private data. If you attach a diagnostics bundle (you can create one in Settings), read it first: it holds your rules and log files, which can include file paths with your Windows user name. It does not hold prompt text or keys.</p>
+          </section>
+
+          <section id="connect" aria-labelledby="connect-title">
+            <h2 id="connect-title">Connect an app</h2>
+            <p>Change the address the app uses for its AI server. With the default port:</p>
+            <div class="table-scroll" role="region" aria-label="Gateway addresses" tabindex="0">
+              <table class="data-table stack">
+                <thead>
+                  <tr><th scope="col">The app speaks</th><th scope="col">Use this address</th></tr>
+                </thead>
+                <tbody>
+                  <tr><th scope="row">OpenAI API</th><td><code>http://127.0.0.1:11500/v1</code></td></tr>
+                  <tr><th scope="row">Ollama API</th><td><code>http://127.0.0.1:11500</code></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>If an app insists on an API key, any value works unless you have set the app's rule to require a Locai Gateway key. In Python with the OpenAI library:</p>
+<pre><code>from openai import OpenAI
+
+client = OpenAI(base_url="http://127.0.0.1:11500/v1", api_key="unused")</code></pre>
+            <p>The first request from the app raises a consent prompt. To check the gateway from a terminal without involving an app's settings:</p>
+<pre><code>curl.exe http://127.0.0.1:11500/locai/health
+curl.exe http://127.0.0.1:11500/v1/models</code></pre>
+            <p>The first command answers straight away with the gateway's status. The second lists your models and, because <code>curl.exe</code> is an app like any other, raises a consent prompt the first time.</p>
+          </section>
+
+          <section id="faq" aria-labelledby="faq-title">
+            <h2 id="faq-title">Common questions</h2>
+
+            <details>
+              <summary>Do I need an account or an internet connection?</summary>
+              <p>No. There is no account, and the gateway makes no internet connections. It works with the network cable unplugged, as long as your runtime does.</p>
+            </details>
+
+            <details>
+              <summary>Which runtimes does it work with?</summary>
+              <p>It looks for Ollama, LM Studio, Jan, GPT4All, llama.cpp and Foundry Local on their usual ports and lists the ones that are running. On the Models tab you can add any other OpenAI-compatible server by its local address, for example <code>http://127.0.0.1:1234</code>. Addresses on other computers are not accepted.</p>
+            </details>
+
+            <details>
+              <summary>What do Allow once, Always allow and Block do?</summary>
+              <p><strong>Allow once</strong> lets the running copy of the app through until it exits. Next time it starts, you are asked again. <strong>Always allow</strong> and <strong>Block</strong> save a rule for the app, which you can change or delete on the Apps tab.</p>
+              <p>If you do not answer in time (30 seconds unless you change it in Settings), the request fails with <code>consent_timeout</code>. The same app is not asked again for one minute, so wait a minute before you retry.</p>
+            </details>
+
+            <details>
+              <summary>How do I change a decision I made?</summary>
+              <p>Open the Apps tab, pick the app and change its rule, or delete the rule to be asked again.</p>
+            </details>
+
+            <details>
+              <summary>Does it store my prompts?</summary>
+              <p>Not unless you turn that on. By default the activity log keeps who called, when, which model, the result and token counts. On the Privacy tab you can choose to store a hash of each prompt, or the full prompt and response, which are then encrypted with Windows data protection. The <a href="privacy.html#content">privacy policy</a> has the details.</p>
+            </details>
+
+            <details>
+              <summary>What does redaction do?</summary>
+              <p>Before a prompt is forwarded, the gateway scans it. Out of the box, credit card numbers and API keys are replaced with a placeholder, and a prompt that contains a private key is rejected. On the Privacy tab you can turn on more detectors (email addresses, phone numbers, IBANs, US social security numbers, Australian tax file numbers, JSON web tokens), choose whether each one masks, blocks or only counts, and add your own patterns. You can also have responses scanned.</p>
+            </details>
+
+            <details>
+              <summary>What does Pause do?</summary>
+              <p>While the gateway is paused, every request through it is refused with <code>gateway_paused</code>. Nothing is forwarded until you resume. Pause and resume are in the tray panel.</p>
+            </details>
+
+            <details>
+              <summary>What is port takeover, and should I turn it on?</summary>
+              <p>Some apps have Ollama's address, <code>localhost:11434</code>, built in and cannot be pointed anywhere else. With port takeover on, the gateway moves Ollama to port 11435 and answers on 11434 itself, so those apps go through the gateway without any change.</p>
+              <p>It is off by default. Turning it on restarts Ollama, and the app asks you first. Turn it on only if you have an app you cannot reconfigure. Turning it off puts Ollama back. If something goes wrong, see <a href="#undo-port-takeover">Undo port takeover by hand</a>.</p>
+            </details>
+
+            <details>
+              <summary>What happens to my apps when the gateway is not running?</summary>
+              <p>Apps that point at the gateway's address cannot connect until it is running again. Your runtimes are not affected and still answer on their own addresses. The gateway starts when you sign in to Windows unless you turned that off in Settings.</p>
+            </details>
+
+            <details>
+              <summary>What are per-app API keys for?</summary>
+              <p>A script run by <code>python.exe</code> looks much like any other script run by <code>python.exe</code>. If you want one script to have its own rule and limits, create a key for that rule on the Apps tab and have the script send it as its API key. Keys start with <code>lgw_</code>. A key is shown once, when you create it. The app keeps only a hash of it.</p>
+            </details>
+
+            <details>
+              <summary>Where is my data, and how do I delete it?</summary>
+              <p>Everything is on your PC, in the app's own data folder. Activity older than the retention period (30 days by default, set on the Privacy tab) is deleted automatically. Uninstalling the app removes all of its data. The <a href="privacy.html#retention">privacy policy</a> lists what is kept and for how long.</p>
+            </details>
+          </section>
+
+          <section id="troubleshooting" aria-labelledby="troubleshooting-title">
+            <h2 id="troubleshooting-title">Troubleshooting</h2>
+
+            <h3>My app cannot connect to 127.0.0.1:11500</h3>
+            <ul>
+              <li>Check that Locai Gateway is running: look for its icon in the notification area of the taskbar, or start it from the Start menu.</li>
+              <li>Another program may be using port 11500. The gateway keeps retrying and records the problem. Choose a different port in Settings, then use the new port in your apps.</li>
+              <li>Use <code>127.0.0.1</code>, <code>localhost</code> or <code>[::1]</code> as the host. The gateway does not accept requests addressed to your PC's network name or network address.</li>
+            </ul>
+
+            <h3>I did not see a consent prompt</h3>
+            <ul>
+              <li>Prompts arrive as Windows notifications. Check that notifications are turned on for Locai Gateway in Windows Settings, under System, then Notifications, and that Do not disturb is off.</li>
+              <li>If a prompt timed out, the same app is not asked again for one minute. Wait, then try again.</li>
+              <li>If the app already has a rule, there is no prompt: the rule decides. Look for the app on the Apps tab.</li>
+            </ul>
+
+            <h3>A runtime is missing from the Models tab</h3>
+            <ul>
+              <li>Make sure the runtime is running and its local server is switched on. Some runtimes, such as LM Studio and Jan, only start their server when you ask them to.</li>
+              <li>If the runtime uses a port other than its usual one, add it on the Models tab with its local address.</li>
+            </ul>
+
+            <h3>An app still reaches Ollama without asking</h3>
+            <p>The app is talking to Ollama's own port, not to the gateway. Change the app's address to the gateway's, or turn on port takeover. The gateway reports apps it sees connecting to a runtime directly.</p>
+
+            <h3>Model downloads or deletes through the gateway are refused</h3>
+            <p>Ollama's model management requests (pull, push, create, copy, delete) are blocked by default and fail with <code>endpoint_not_allowed</code>. To allow them, allow model management in Settings and include management requests in the rule of the app that should be able to make them.</p>
+          </section>
+
+          <section id="errors" aria-labelledby="errors-title">
+            <h2 id="errors-title">Error codes</h2>
+            <p>When the gateway refuses a request, the app receives an error with one of these codes. Requests to the OpenAI API paths get the code in the <code>error.code</code> field. Requests to the Ollama API paths get the message only.</p>
+            <div class="table-scroll" role="region" aria-label="Error codes" tabindex="0">
+              <table class="data-table stack">
+                <thead>
+                  <tr><th scope="col">Code</th><th scope="col">Status</th><th scope="col">Meaning and what to do</th></tr>
+                </thead>
+                <tbody>
+                  <tr><th scope="row"><code>consent_timeout</code></th><td data-label="HTTP status">403</td><td>The consent prompt was not answered in time. Wait a minute, try again and answer the prompt.</td></tr>
+                  <tr><th scope="row"><code>consent_denied</code></th><td data-label="HTTP status">403</td><td>You chose Block for this app. Change its rule on the Apps tab.</td></tr>
+                  <tr><th scope="row"><code>app_denied</code></th><td data-label="HTTP status">403</td><td>A rule or setting blocks this app. Check the Apps tab and the unknown-apps setting.</td></tr>
+                  <tr><th scope="row"><code>model_not_allowed</code></th><td data-label="HTTP status">403</td><td>The app's rule does not include this model.</td></tr>
+                  <tr><th scope="row"><code>endpoint_not_allowed</code></th><td data-label="HTTP status">403</td><td>The app's rule does not include this kind of request, or model management is turned off.</td></tr>
+                  <tr><th scope="row"><code>invalid_host</code></th><td data-label="HTTP status">403</td><td>The request was not addressed to <code>127.0.0.1</code>, <code>localhost</code> or <code>[::1]</code>.</td></tr>
+                  <tr><th scope="row"><code>key_required</code></th><td data-label="HTTP status">401</td><td>This app needs a Locai Gateway API key. Create one on the Apps tab and send it as a Bearer token.</td></tr>
+                  <tr><th scope="row"><code>key_invalid</code></th><td data-label="HTTP status">401</td><td>The key is wrong, revoked, or belongs to a rule that no longer exists.</td></tr>
+                  <tr><th scope="row"><code>model_not_found</code></th><td data-label="HTTP status">404</td><td>No running runtime has a model with that name. Check the Models tab.</td></tr>
+                  <tr><th scope="row"><code>unknown_endpoint</code></th><td data-label="HTTP status">404</td><td>The gateway does not support that path.</td></tr>
+                  <tr><th scope="row"><code>redaction_blocked</code></th><td data-label="HTTP status">422</td><td>The prompt contains something a detector is set to block, by default a private key. See the Privacy tab.</td></tr>
+                  <tr><th scope="row"><code>rate_limited</code></th><td data-label="HTTP status">429</td><td>The app passed its requests-per-minute limit. The reply says when to retry.</td></tr>
+                  <tr><th scope="row"><code>budget_exhausted</code></th><td data-label="HTTP status">429</td><td>The app used its daily or monthly token budget.</td></tr>
+                  <tr><th scope="row"><code>concurrency_limit</code></th><td data-label="HTTP status">429</td><td>The app has too many requests running at once.</td></tr>
+                  <tr><th scope="row"><code>body_too_large</code></th><td data-label="HTTP status">413</td><td>The request is larger than the gateway accepts.</td></tr>
+                  <tr><th scope="row"><code>bad_json</code></th><td data-label="HTTP status">400</td><td>The request body is not valid JSON.</td></tr>
+                  <tr><th scope="row"><code>gateway_paused</code></th><td data-label="HTTP status">503</td><td>The gateway is paused. Resume it from the tray panel.</td></tr>
+                  <tr><th scope="row"><code>upstream_unavailable</code></th><td data-label="HTTP status">503</td><td>The runtime that has the model cannot be reached. Start it.</td></tr>
+                  <tr><th scope="row"><code>upstream_error</code></th><td data-label="HTTP status">502</td><td>The runtime sent a reply the gateway could not use.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section id="undo-port-takeover" aria-labelledby="undo-title">
+            <h2 id="undo-title">Undo port takeover by hand</h2>
+            <p>The normal way is to turn port takeover off in Locai Gateway, on the Models tab. That puts Ollama's setting back and restarts Ollama. Use the steps below only if that is not possible, for example because the app was removed while port takeover was on and Ollama now answers on port 11435 instead of 11434.</p>
+            <p>Port takeover works by setting one environment variable for your Windows account, <code>OLLAMA_HOST</code>, to <code>127.0.0.1:11435</code>. Ollama reads it when it starts. To undo it:</p>
+            <ol>
+              <li>Open the Start menu, type <kbd>environment variables</kbd> and choose <strong>Edit environment variables for your account</strong>.</li>
+              <li>Under <strong>User variables</strong>, select <code>OLLAMA_HOST</code>.</li>
+              <li>If you never set this variable yourself, choose <strong>Delete</strong>. If you had your own value before, choose <strong>Edit</strong> and put your value back.</li>
+              <li>Choose <strong>OK</strong> to close the window.</li>
+              <li>Restart Ollama: right-click its icon in the notification area and choose Quit, then start it again from the Start menu.</li>
+            </ol>
+            <p>The same thing in PowerShell, for the case where you had no value of your own:</p>
+<pre><code>[Environment]::SetEnvironmentVariable("OLLAMA_HOST", $null, "User")</code></pre>
+            <p>Then restart Ollama and check that it is back on its usual port:</p>
+<pre><code>curl.exe http://127.0.0.1:11434/api/version</code></pre>
+          </section>
+
+          <section id="uninstall" aria-labelledby="uninstall-title">
+            <h2 id="uninstall-title">Uninstall</h2>
+            <ol>
+              <li>If port takeover is on, turn it off first, so that Ollama goes back to its usual port.</li>
+              <li>Point your apps back at their runtimes' own addresses.</li>
+              <li>In Windows Settings, open Apps, then Installed apps, find Locai Gateway and choose Uninstall.</li>
+            </ol>
+            <p>Uninstalling removes the app's data: the activity log, your rules and settings, keys and logs.</p>
+          </section>
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-top">
+        <a class="brand" href="./">
+          <img src="assets/logo.svg" width="32" height="32" alt="">
+          Locai Gateway
+        </a>
+        <nav aria-label="Footer">
+          <ul>
+            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="support.html" aria-current="page">Support</a></li>
+            <li><a href="notices.html">Notices</a></li>
+            <li><a href="https://github.com/mjtpena/locai-gateway-site/issues" rel="noopener">Report an issue</a></li>
+          </ul>
+        </nav>
+      </div>
+      <p>&copy; 2026 mjtpena. Locai Gateway is an independent product. It is not affiliated with or endorsed by the makers of Ollama, LM Studio, Jan, GPT4All, llama.cpp or Foundry Local. Product names are trademarks of their owners.</p>
+    </div>
+  </footer>
+</body>
+</html>
